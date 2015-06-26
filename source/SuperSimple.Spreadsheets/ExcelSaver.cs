@@ -6,7 +6,6 @@ using System.IO;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Spreadsheet;
-using System.Windows;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using SSExcel.Serializer;
