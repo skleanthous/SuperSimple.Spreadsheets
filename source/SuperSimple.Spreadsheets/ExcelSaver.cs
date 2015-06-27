@@ -8,9 +8,9 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Spreadsheet;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
-using SSExcel.Serializer;
+using SuperSimple.Spreadsheets.Serializer;
 
-namespace SSExcel
+namespace SuperSimple.Spreadsheets
 {
     public class ExcelSaver
     {
@@ -62,14 +62,6 @@ namespace SSExcel
             }
         }
 
-        public void Save(string fname)
-        {
-            using (Stream file = File.Open(fname, FileMode.Create))
-            {
-                SaveToStream(file);
-            }
-        }
-
         //TODO: (Savvas): Not a good method, but will do as part of the current task (OLYMPUS-1652)
         // Should really support this as an open-source project.
         public static void Save<T>(IEnumerable<T> rows, Stream streamToSaveTo = null, string sheetName = DEF_WORKSHEET_NAME, ISerializerToExcelRow serializer = null)
@@ -84,12 +76,6 @@ namespace SSExcel
             var saver = new ExcelSaver(data, sheetName);
 
             saver.SaveToStream(streamToSaveTo);
-        }
-
-        public static void Save(IEnumerable<ExcelRow> rows, string fname, string sheetName = DEF_WORKSHEET_NAME)
-        {
-            ExcelSaver saver = new ExcelSaver(rows, sheetName);
-            saver.Save(fname);
         }
 
         public void SaveToStream(Stream stream)

@@ -6,7 +6,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using System.IO;
 
-namespace SSExcel
+namespace SuperSimple.Spreadsheets
 {
     public class ExcelLoader : IDisposable
     {
@@ -82,7 +82,10 @@ namespace SSExcel
                             ((List<Sheet>)Sheets).Add(sheet);
                     }
 
-                    Stylesheet = workbookPart.WorkbookStylesPart.Stylesheet;
+                    if(workbookPart.WorkbookStylesPart != null)
+                    {
+                        Stylesheet = workbookPart.WorkbookStylesPart.Stylesheet;
+                    }
 
                     ActiveWorkbookPart = workbookPart;
 
@@ -208,7 +211,7 @@ namespace SSExcel
                         ExcelCell val = null;
 
                         CellFormat toFindNumbFormat = null;
-                        if(c.StyleIndex != null)
+                        if(c.StyleIndex != null && styles != null)
                             toFindNumbFormat = styles.CellFormats.ToArray()[c.StyleIndex.Value] as CellFormat;
 
                         bool isDate = false;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SSExcel.Serializer
+namespace SuperSimple.Spreadsheets.Serializer
 {
     public interface ISerializerToExcelRow
     {

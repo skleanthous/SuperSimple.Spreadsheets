@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSExcel
+namespace SuperSimple.Spreadsheets
 {
     public class ExcelRow: List<ExcelCell>
     {
@@ -12,6 +12,16 @@ namespace SSExcel
         }
 
         public ExcelRow(params object[] values)
+        {
+            foreach (var val in values)
+                this.Add(new ExcelCell(val));
+        }
+
+        /// <summary>
+        /// This is to match iterators
+        /// </summary>
+        /// <param name="values"></param>
+        public ExcelRow(IEnumerable<object> values)
         {
             foreach (var val in values)
                 this.Add(new ExcelCell(val));
