@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace SSExcel.Serializer
+namespace SuperSimple.Spreadsheets.Serializer
 {
     internal class SerializerToExcelRow : ISerializerToExcelRow
     {
@@ -22,7 +22,7 @@ namespace SSExcel.Serializer
 
             foreach(var itemToSerialize in itemsToSerialize)
             {
-                yield return new ExcelRow(GetValues(properties, fields, itemsToSerialize));
+                yield return new ExcelRow(GetValues(properties, fields, itemToSerialize));
             }
         }
 
@@ -41,13 +41,13 @@ namespace SSExcel.Serializer
 
         private static FieldInfo[] GetFields(Type type)
         {
-            return type.GetRuntimeFields()
+            return type.GetFields(BindingFlags.Instance | BindingFlags.Public)
                 .ToArray();
         }
 
         private static PropertyInfo[] GetProperties(Type type)
         {
-            return type.GetRuntimeProperties()//.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance)
+            return type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
                 .Where(p => p.CanRead)
                 .ToArray();
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SSExcel
+namespace SuperSimple.Spreadsheets
 {
     public class ExcelCell
     {
