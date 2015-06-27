@@ -30,4 +30,10 @@ Things are really quite simple. Given a class Data like so:
 Then the below code:
 
     ...
-    using(var fStream = File.Open())
+    using(var fStream = File.Open("data.xlsx", FileMode.Create))
+    {
+        ExcelSaver.Save(dataToStore, fStream);
+    }
+    ...
+
+will create an xlsx file with headers for the items passed in. Only public properties and fields are considered in this release.
