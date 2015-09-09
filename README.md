@@ -4,7 +4,7 @@ SuperSimple.Spreadsheet
 1. Description
 --------------
 
-This is a library to make writing spreadsheets using the OpenXML SDK 2.5 as easy as possible. I did not set to create this project (and nuget package details soon) due to vanity or to learn OpenXML. Rather, two years ago when I first started to had to read and write spreadsheet files, there was no free and open source project to do this in a simple way. 
+This is a library to make writing spreadsheets using the OpenXML SDK 2.5 as easy as possible. I did not set to create this project (and nuget package, see installation) due to vanity or to learn OpenXML. Rather, two years ago when I first started to had to read and write spreadsheet files, there was no free and open source project to do this in a simple way. 
 
 The goal is to allow people to shift focus away from working with spreadsheets, lift the impediment to learn libraries to read and save spreadsheets, and cut down the time needed to start working with spreadsheets to a minimum.
 
@@ -37,3 +37,12 @@ Then the below code:
     ...
 
 will create an xlsx file with headers for the items passed in. Only public properties and fields are considered in this release.
+
+4. Installation
+---------------
+
+To install it, use NuGet:
+* From the Nuget package manager search for SuperSimple.Spreadsheets
+* Alternativelly run Install-Package SuperSimple.Spreadsheets from the Package Manager Console
+
+You can build it from source using Visual Studio. It has been tested to work with Visual Studio 2012, Visual Studio 2013 and Visual Studio 2015.
