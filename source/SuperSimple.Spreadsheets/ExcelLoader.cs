@@ -26,6 +26,8 @@ namespace SuperSimple.Spreadsheets
         /// </summary>
         SpreadsheetDocument Document { get; set; }
 
+        public bool IgnoreNullOrEmptyCells { get; }
+
         bool changedSheetProcessingFunc = true;
         private Func<Sheet, bool> confirmSheetProcessing;
         /// <summary>
@@ -171,8 +173,8 @@ namespace SuperSimple.Spreadsheets
         /// Loads an excel 2007 file for reading only.
         /// </summary>
         /// <param name="path"></param>
-        public ExcelLoader(string path)
-            : this(SpreadsheetDocument.Open(path, false))
+        public ExcelLoader(string path, bool ignoreNullOrEmptyCells = true)
+            : this(SpreadsheetDocument.Open(path, false), ignoreNullOrEmptyCells)
         {
             Filename = path.Contains("\\") ? path.Substring(path.LastIndexOf('\\') + 1) : path;
         }
@@ -181,9 +183,10 @@ namespace SuperSimple.Spreadsheets
         /// An excel 2007 file for reading, already open in readonly mode.
         /// </summary>
         /// <param name="document"></param>
-        public ExcelLoader(SpreadsheetDocument document)
+        public ExcelLoader(SpreadsheetDocument document, bool ignoreNullOrEmptyCells = true)
         {
             Document = document;
+            IgnoreNullOrEmptyCells = ignoreNullOrEmptyCells;
         }
         #endregion
 
@@ -201,11 +204,13 @@ namespace SuperSimple.Spreadsheets
                     foreach (Cell c in row.ChildElements)
                     {
                         if (c == null || c.CellValue == null || string.IsNullOrWhiteSpace(c.CellValue.Text))
-                            continue;
+                        {
+                            if(!IgnoreNullOrEmptyCells) rowData.AddCell(null);
 
+                            continue;
+                        }
 
                         var styles = dataWithMeta.Item3;
-
 
                         //Dates from excel: http://blogs.msdn.com/b/eric_carter/archive/2004/08/14/214713.aspx
                         ExcelCell val = null;
