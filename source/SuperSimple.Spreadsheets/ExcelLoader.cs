@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using System.IO;
@@ -201,13 +200,27 @@ namespace SuperSimple.Spreadsheets
                 {
                     //List<string> rowData = new List<string>();
                     ExcelRow rowData = new ExcelRow();
+                    int? lastCollumn = null;
+                    if (int.TryParse(row.Spans.Items.Last()?.Value.Split(':')[1], out int lastSpanCollumn)) lastCollumn = lastSpanCollumn;
+                    int currentCollumn = 0;
                     foreach (Cell c in row.ChildElements)
                     {
+                        currentCollumn++;
                         if (c == null || c.CellValue == null || string.IsNullOrWhiteSpace(c.CellValue.Text))
                         {
                             if(!IgnoreNullOrEmptyCells) rowData.AddCell(null);
 
                             continue;
+                        }
+
+                        if (!IgnoreNullOrEmptyCells)
+                        {
+                            var collumnIndex = ExtractColumnIndex(c.CellReference) ?? currentCollumn;
+
+                            for (; collumnIndex > currentCollumn; currentCollumn++)
+                            {
+                                rowData.AddCell(null);
+                            }
                         }
 
                         var styles = dataWithMeta.Item3;
@@ -256,12 +269,27 @@ namespace SuperSimple.Spreadsheets
                         rowData.Add(val);
                     }
 
+                    for (int i = currentCollumn; currentCollumn < lastCollumn; currentCollumn++)
+                    {
+                        rowData.AddCell(null);
+                    }
+
                     tableData.Add(rowData);
                 }
 
             return tableData;
         }
 
+        private int? ExtractColumnIndex(string reference)
+        {
+            if (reference == null) return null;
+
+            int ci = 0;
+            reference = reference.ToUpper();
+            for (int ix = 0; ix < reference.Length && reference[ix] >= 'A'; ix++)
+                ci = (ci * 26) + ((int)reference[ix] - 64);
+            return ci;
+        }
         #endregion
 
         #region Verify data and helpers

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSimple.Spreadsheets", "SuperSimple.Spreadsheets\SuperSimple.Spreadsheets.csproj", "{4E968583-27AC-488D-9846-7AB6F2125B55}"
 EndProject
@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitNotes", "GitNotes", "{69
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSimple.Spreadsheets.Test.Acceptance", "SuperSimple.Spreadsheets.Test.Acceptance\SuperSimple.Spreadsheets.Test.Acceptance.csproj", "{E3743E46-9FB4-4DE2-9205-AAF3069B0748}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSimple.Spreadsheets.ConsoleTest", "SuperSimple.Spreadsheets.ConsoleTest\SuperSimple.Spreadsheets.ConsoleTest.csproj", "{0E43317F-E71E-4D0F-87F5-30EF989388BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,8 +28,15 @@ Global
 		{E3743E46-9FB4-4DE2-9205-AAF3069B0748}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3743E46-9FB4-4DE2-9205-AAF3069B0748}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3743E46-9FB4-4DE2-9205-AAF3069B0748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E43317F-E71E-4D0F-87F5-30EF989388BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E43317F-E71E-4D0F-87F5-30EF989388BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E43317F-E71E-4D0F-87F5-30EF989388BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E43317F-E71E-4D0F-87F5-30EF989388BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B69FEB3-6A5B-48D2-BDA0-D26F57F549D4}
 	EndGlobalSection
 EndGlobal
