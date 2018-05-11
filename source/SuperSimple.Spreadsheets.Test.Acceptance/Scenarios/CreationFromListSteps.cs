@@ -57,7 +57,7 @@ namespace SuperSimple.Spreadsheets.Test.Acceptance.Scenarios
 
             ExcelSaver.Save(ToStore, SpreadsheetStream);
         }
-        
+
         [Then(@"the result should be a file that can be opened")]
         public void ThenTheResultShouldBeAFileThatCanBeOpened()
         {
@@ -65,7 +65,7 @@ namespace SuperSimple.Spreadsheets.Test.Acceptance.Scenarios
 
             ExcelLoader.LoadReadOnlyFromStream(SpreadsheetStream).ReadRows();
         }
-        
+
         [Then(@"it should contain (.*) rows \((.*) for items and one for header\)")]
         public void ThenItShouldContainRowsForItemsAndOneForHeader(int p0, int p1)
         {
@@ -75,7 +75,7 @@ namespace SuperSimple.Spreadsheets.Test.Acceptance.Scenarios
                 .ReadRows()
                 .Count.Should().Be(p0);
         }
-        
+
         [Then(@"each row should correspond to the data in the list")]
         public void ThenEachRowShouldCorrespondToTheDataInTheList()
         {

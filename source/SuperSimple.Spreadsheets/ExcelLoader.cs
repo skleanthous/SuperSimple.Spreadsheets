@@ -198,11 +198,10 @@ namespace SuperSimple.Spreadsheets
             foreach (var dataWithMeta in SheetDataWithMeta)
                 foreach(Row row in dataWithMeta.Item1.ChildElements)
                 {
-                    //List<string> rowData = new List<string>();
-                    ExcelRow rowData = new ExcelRow();
-                    int? lastCollumn = null;
-                    if (int.TryParse(row.Spans.Items.Last()?.Value.Split(':')[1], out int lastSpanCollumn)) lastCollumn = lastSpanCollumn;
-                    int currentCollumn = 0;
+                    var rowData = new ExcelRow();
+                    int? lastCollumn = row.ChildElements.Count;
+                    var currentCollumn = 0;
+
                     foreach (Cell c in row.ChildElements)
                     {
                         currentCollumn++;

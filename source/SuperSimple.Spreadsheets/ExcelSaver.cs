@@ -9,6 +9,7 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using SuperSimple.Spreadsheets.Serializer;
+using Microsoft.CSharp.RuntimeBinder;
 
 namespace SuperSimple.Spreadsheets
 {
