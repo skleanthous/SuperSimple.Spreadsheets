@@ -1,17 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>SuperSimple.Spreadsheets</RootNamespace>
-      <Id>ParcelVision.Common</Id>
-      <Version>$(Version)</Version>
+      <Id>SuperSimple.Spreadsheets</Id>
+      <Version>0.1.4</Version>
       <Title>SuperSimple.Spreadsheets</Title>
       <Authors>Savvas Kleanthous</Authors>
       <Owners>$author$</Owners>
       <licenseUrl>https://github.com/skleanthous/SuperSimple.Spreadsheets/blob/dev/LICENSE</licenseUrl>
       <projectUrl>https://github.com/skleanthous/SuperSimple.Spreadsheets</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
-      <Description>>Read and save to .xlsx made easy. For the developer that has better things to do that work with spreadsheets but just has to provide something to the business. The purpose of this package is to minimize the learning curve required to start saving to excel files or reading spreadsheet files uploaded from users.</Description>
+      <Description>&gt;Read and save to .xlsx made easy. For the developer that has better things to do that work with spreadsheets but just has to provide something to the business. The purpose of this package is to minimize the learning curve required to start saving to excel files or reading spreadsheet files uploaded from users.</Description>
       <Copyright>Copyright 2017</Copyright>
       <Tags>Excel Spreadsheet OpenXml</Tags>
       <PackageReleaseNotes>Added flag to allow for not ignoring null cells in rows when reading a spreadsheet. Now loader uses spans to not skip empty cells and returns cells as Excel does. Excel: you are weird.</PackageReleaseNotes>
